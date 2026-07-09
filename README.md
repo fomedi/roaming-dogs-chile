@@ -184,4 +184,4 @@ Data: contact corresponding author (F.O. Mardones) regarding access to raw trans
 
 ## Contact
 
-**Francisco O. Mardones** — Division of Global Agriculture and Food Systems, Royal (Dick) School of Veterinary Studies, The University of Edinburgh, UK.
+**Fernando O. Mardones** — Division of Global Agriculture and Food Systems, Royal (Dick) School of Veterinary Studies, The University of Edinburgh, UK.
