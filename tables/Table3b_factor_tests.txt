@@ -1,0 +1,22 @@
+$team
+Likelihood ratio tests of Negative Binomial Models
+
+Response: total_dogs
+                  Model    theta Resid. df    2 x log-lik.   Test    df   LR stat.
+1    1 + offset(log_km) 2.935911        24       -250.1507                        
+2 team + offset(log_km) 2.940052        23       -250.0732 1 vs 2     1 0.07757683
+    Pr(Chi)
+1          
+2 0.7806085
+
+$macrozona
+Likelihood ratio tests of Negative Binomial Models
+
+Response: total_dogs
+                               Model    theta Resid. df    2 x log-lik.   Test
+1                 1 + offset(log_km) 2.935911        24       -250.1507       
+2 factor(macrozona) + offset(log_km) 3.734197        20       -244.1363 1 vs 2
+     df LR stat.   Pr(Chi)
+1                         
+2     4 6.014441 0.1980724
+

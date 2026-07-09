@@ -1,0 +1,7 @@
+"predictor","dataset","OR_fmt","p.value","sig","phi_used"
+"Neutering rate (prop.)","All 25 districts","0.54 (0.31–0.91)",0.0348059028885755,"*",11.38
+"Human density/km² (log)","All 25 districts","0.69 (0.38–1.23)",0.230396759734985,"ns",11.38
+"Always indoors (prop.)","All 25 districts","1.06 (0.61–1.91)",0.838063064081996,"ns",11.38
+"Neutering rate (prop.)","Excl. low-effort (n = 22)","0.53 (0.29–0.93)",0.0455983911628363,"*",12.94
+"Human density/km² (log)","Excl. low-effort (n = 22)","0.71 (0.37–1.33)",0.304823909249649,"ns",12.94
+"Always indoors (prop.)","Excl. low-effort (n = 22)","1.04 (0.58–1.96)",0.893682636563874,"ns",12.94

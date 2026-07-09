@@ -1,0 +1,110 @@
+$AIC_poisson_vs_nb
+       df      AIC
+m_pois 16 1469.869
+m_nb   17 1279.661
+
+$typeII
+Analysis of Deviance Table (Type II Wald chisquare tests)
+
+Response: dogs
+         Chisq Df Pr(>Chisq)  
+day     3.8916  5    0.56512  
+hour_f 21.1387  9    0.01205 *
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+$LRT_day
+Data: cells
+Models:
+update(m_nb, . ~ . - day): dogs ~ hour_f + (1 | district) + offset(log_km), zi=~0, disp=~1
+m_nb: dogs ~ day + hour_f + (1 | district) + offset(log_km), zi=~0, disp=~1
+                          Df    AIC    BIC  logLik deviance  Chisq Chi Df
+update(m_nb, . ~ . - day) 12 1273.6 1313.9 -624.79   1249.6              
+m_nb                      17 1279.7 1336.8 -622.83   1245.7 3.9147      5
+                          Pr(>Chisq)
+update(m_nb, . ~ . - day)           
+m_nb                          0.5618
+
+$LRT_hour
+Data: cells
+Models:
+update(m_nb, . ~ . - hour_f): dogs ~ day + (1 | district) + offset(log_km), zi=~0, disp=~1
+m_nb: dogs ~ day + hour_f + (1 | district) + offset(log_km), zi=~0, disp=~1
+                             Df    AIC    BIC  logLik deviance  Chisq Chi Df
+update(m_nb, . ~ . - hour_f)  8 1282.0 1308.9 -633.00   1266.0              
+m_nb                         17 1279.7 1336.8 -622.83   1245.7 20.332      9
+                             Pr(>Chisq)  
+update(m_nb, . ~ . - hour_f)             
+m_nb                            0.01597 *
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+$LRT_district_RE
+Data: cells
+Models:
+m_nore: dogs ~ day + hour_f + offset(log_km), zi=~0, disp=~1
+m_nb: dogs ~ day + hour_f + (1 | district) + offset(log_km), zi=~0, disp=~1
+       Df    AIC    BIC  logLik deviance Chisq Chi Df Pr(>Chisq)    
+m_nore 16 1348.8 1402.6 -658.41   1316.8                            
+m_nb   17 1279.7 1336.8 -622.83   1245.7 71.15      1  < 2.2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+$ICC
+# Intraclass Correlation Coefficient
+
+    Adjusted ICC: 0.521
+  Unadjusted ICC: 0.474
+
+$LRT_hour_smooth
+Data: cells
+Models:
+m_null: dogs ~ day + (1 | district) + offset(log_km), zi=~0, disp=~1
+m_spl: dogs ~ day + ns(hour, 3) + (1 | district) + offset(log_km), zi=~0, disp=~1
+       Df    AIC    BIC  logLik deviance  Chisq Chi Df Pr(>Chisq)  
+m_null  8 1282.0 1308.9 -633.00   1266.0                           
+m_spl  11 1276.7 1313.7 -627.34   1254.7 11.311      3    0.01016 *
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+$AIC_all
+       df      AIC
+m_null  8 1281.994
+m_nb   17 1279.661
+m_spl  11 1276.682
+m_team 12 1278.669
+m_int  15 1280.230
+
+$LRT_team
+Data: cells
+Models:
+m_spl: dogs ~ day + ns(hour, 3) + (1 | district) + offset(log_km), zi=~0, disp=~1
+m_team: dogs ~ team + day + ns(hour, 3) + (1 | district) + offset(log_km), zi=~0, disp=~1
+       Df    AIC    BIC  logLik deviance  Chisq Chi Df Pr(>Chisq)
+m_spl  11 1276.7 1313.7 -627.34   1254.7                         
+m_team 12 1278.7 1319.0 -627.33   1254.7 0.0138      1     0.9065
+
+$team_RR
+# A tibble: 10 × 9
+   effect component term    estimate std.error statistic  p.value conf.low conf.high
+   <chr>  <chr>     <chr>      <dbl>     <dbl>     <dbl>    <dbl>    <dbl>     <dbl>
+ 1 fixed  cond      (Inter…   18.1       5.23     10.1   8.64e-24   10.3      31.9  
+ 2 fixed  cond      teamUn…    0.971     0.247    -0.117 9.07e- 1    0.590     1.60 
+ 3 fixed  cond      day2       1.19      0.151     1.37  1.71e- 1    0.928     1.52 
+ 4 fixed  cond      day3       1.15      0.155     1.04  2.99e- 1    0.883     1.50 
+ 5 fixed  cond      day4       1.05      0.165     0.319 7.49e- 1    0.773     1.43 
+ 6 fixed  cond      day5       1.16      0.213     0.834 4.04e- 1    0.814     1.67 
+ 7 fixed  cond      day6       1.75      1.03      0.948 3.43e- 1    0.551     5.55 
+ 8 fixed  cond      ns(hou…    0.530     0.139    -2.41  1.58e- 2    0.316     0.888
+ 9 fixed  cond      ns(hou…    0.356     0.197    -1.87  6.18e- 2    0.120     1.05 
+10 fixed  cond      ns(hou…    0.804     0.200    -0.874 3.82e- 1    0.493     1.31 
+
+$LRT_team_x_hour
+Data: cells
+Models:
+m_team: dogs ~ team + day + ns(hour, 3) + (1 | district) + offset(log_km), zi=~0, disp=~1
+m_int: dogs ~ team * ns(hour, 3) + day + (1 | district) + offset(log_km), zi=~0, disp=~1
+       Df    AIC    BIC  logLik deviance  Chisq Chi Df Pr(>Chisq)
+m_team 12 1278.7 1319.0 -627.33   1254.7                         
+m_int  15 1280.2 1330.7 -625.12   1250.2 4.4381      3     0.2179
+
